@@ -1,0 +1,97 @@
+import React, { useRef, useEffect, useState } from 'react';
+
+const images = [
+  { url: '/assets/images/IMG_0198.jpg', title: 'Site Preparation' },
+  { url: '/assets/images/IMG_0909.jpg', title: 'Fleet Excellence' },
+  { url: '/assets/images/IMG_1515.jpg', title: 'Precision Grading' },
+  { url: '/assets/images/IMG_1960.jpg', title: 'Industrial Hauling' },
+  { url: '/assets/images/IMG_2343.jpg', title: 'Large Scale Demo' },
+  { url: '/assets/images/IMG_7336.jpg', title: 'On-Site Operations' },
+  { url: '/assets/images/IMG_8123.jpg', title: 'Concrete Foundations' },
+  { url: '/assets/images/IMG_8789.jpg', title: 'Heavy Machinery' },
+  { url: '/assets/images/IMG_9885.jpg', title: 'Excavation Depth' },
+];
+
+function Gallery() {
+  const scrollRef = useRef(null);
+  const [scrollSpeed, setScrollSpeed] = useState(1); // Default right-to-left speed
+  const [isHovering, setIsHovering] = useState(false);
+  const requestRef = useRef();
+
+  const animate = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft += scrollSpeed;
+      
+      // Infinite loop logic
+      if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+        scrollRef.current.scrollLeft = 0;
+      } else if (scrollRef.current.scrollLeft <= 0) {
+        scrollRef.current.scrollLeft = scrollRef.current.scrollWidth / 2;
+      }
+    }
+    requestRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [scrollSpeed]);
+
+  const handleMouseMove = (e) => {
+    const { clientX } = e;
+    const windowWidth = window.innerWidth;
+    const threshold = 0.2; // 20% of the screen sides
+
+    if (clientX < windowWidth * threshold) {
+      // Hover left side - scroll left faster
+      setScrollSpeed(-8);
+      setIsHovering(true);
+    } else if (clientX > windowWidth * (1 - threshold)) {
+      // Hover right side - scroll right faster
+      setScrollSpeed(8);
+      setIsHovering(true);
+    } else {
+      // Middle area - static speed (slow auto-scroll)
+      setScrollSpeed(1);
+      setIsHovering(false);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setScrollSpeed(1);
+    setIsHovering(false);
+  };
+
+  // Double the images for seamless infinite scroll
+  const displayImages = [...images, ...images];
+
+  return (
+    <div 
+      className="gallery-page"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="gallery-header">
+        <h1>PROJECT GALLERY</h1>
+      </div>
+
+      <div className="gallery-scroll-container" ref={scrollRef}>
+        <div className="gallery-track">
+          {displayImages.map((img, index) => (
+            <div key={index} className="gallery-card">
+              <div className="gallery-image-wrapper">
+                <img src={img.url} alt={img.title} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="gallery-controls-hint">
+        <span>&larr; HOVER SIDES TO NAVIGATE &rarr;</span>
+      </div>
+    </div>
+  );
+}
+
+export default Gallery;

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const images = [
   { url: '/assets/images/IMG_0198.jpg', title: 'Site Preparation' },
@@ -15,13 +15,12 @@ const images = [
 function Gallery() {
   const scrollRef = useRef(null);
   const [scrollSpeed, setScrollSpeed] = useState(1); // Default right-to-left speed
-  const [isHovering, setIsHovering] = useState(false);
   const requestRef = useRef();
 
   const animate = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft += scrollSpeed;
-      
+
       // Infinite loop logic
       if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
         scrollRef.current.scrollLeft = 0;
@@ -43,33 +42,47 @@ function Gallery() {
     const threshold = 0.2; // 20% of the screen sides
 
     if (clientX < windowWidth * threshold) {
-      // Hover left side - scroll left faster
       setScrollSpeed(-8);
-      setIsHovering(true);
     } else if (clientX > windowWidth * (1 - threshold)) {
-      // Hover right side - scroll right faster
       setScrollSpeed(8);
-      setIsHovering(true);
     } else {
-      // Middle area - static speed (slow auto-scroll)
       setScrollSpeed(1);
-      setIsHovering(false);
     }
   };
 
   const handleMouseLeave = () => {
     setScrollSpeed(1);
-    setIsHovering(false);
+  };
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0];
+    const { clientX } = touch;
+    const windowWidth = window.innerWidth;
+    const threshold = 0.2;
+
+    if (clientX < windowWidth * threshold) {
+      setScrollSpeed(-8);
+    } else if (clientX > windowWidth * (1 - threshold)) {
+      setScrollSpeed(8);
+    } else {
+      setScrollSpeed(1);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setScrollSpeed(1);
   };
 
   // Double the images for seamless infinite scroll
   const displayImages = [...images, ...images];
 
   return (
-    <div 
+    <div
       className="gallery-page"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div className="gallery-header">
         <h1>PROJECT GALLERY</h1>
@@ -88,7 +101,7 @@ function Gallery() {
       </div>
 
       <div className="gallery-controls-hint">
-        <span>&larr; HOVER SIDES TO NAVIGATE &rarr;</span>
+        <span>&larr; TOUCH OR HOVER SIDES TO NAVIGATE &rarr;</span>
       </div>
     </div>
   );

@@ -145,6 +145,10 @@ section {
   color: var(--color-primary);
 }
 
+.hamburger {
+  display: none;
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -408,6 +412,12 @@ section {
   letter-spacing: 1px;
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
 .form-control {
   width: 100%;
   padding: 1rem;
@@ -533,8 +543,69 @@ textarea.form-control {
   .hero-title {
     font-size: 2.5rem;
   }
-  .nav-links a {
+  .hero {
+    padding: 0 1.25rem 5rem;
+  }
+
+  /* Hamburger button */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+  }
+
+  /* Mobile nav */
+  .navbar {
+    padding: 0.75rem 1.25rem;
+  }
+  .nav-brand {
+    font-size: 1.3rem;
+  }
+  .nav-links {
     display: none;
+  }
+  .nav-links.nav-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    right: 0;
+    background: var(--color-dark);
+    padding: 1.5rem;
+    gap: 1.25rem;
+    z-index: 99;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .nav-links.nav-open .btn-primary {
+    width: fit-content;
+  }
+
+  /* Footer */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .footer-bottom > div:last-child {
+    text-align: center;
+  }
+
+  /* Contact form */
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -18,7 +18,7 @@ function Contact() {
 
             
             <form className="contact-form">
-              <div className="form-group" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div className="form-group form-row">
                 <div>
                   <label htmlFor="fullName">Full Name</label>
                   <input type="text" id="fullName" className="form-control" placeholder="John Doe" />

@@ -1,17 +1,31 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 function Layout() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="nav-brand">Advanced Earthworks</Link>
-        <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/gallery">Gallery</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact" className="btn btn-primary" style={{ padding: '0.75rem 1.25rem', borderRadius: '4px' }}>Contact Us</Link>
+        <Link to="/" className="nav-brand" onClick={closeMenu}>Advanced Earthworks</Link>
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div className={`nav-links${menuOpen ? ' nav-open' : ''}`}>
+          <Link to="/" onClick={closeMenu}>Home</Link>
+          <Link to="/services" onClick={closeMenu}>Services</Link>
+          <Link to="/gallery" onClick={closeMenu}>Gallery</Link>
+          <Link to="/about" onClick={closeMenu}>About</Link>
+          <Link to="/contact" className="btn btn-primary" style={{ padding: '0.75rem 1.25rem', borderRadius: '4px' }} onClick={closeMenu}>Contact Us</Link>
         </div>
       </nav>
 

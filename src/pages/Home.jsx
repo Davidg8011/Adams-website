@@ -22,7 +22,7 @@ function Home() {
           <div className="values-header" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h2>YOUR PROJECT<br/>MATTERS.</h2>
             <p style={{ color: '#666', marginTop: '1rem', fontSize: '1.1rem', maxWidth: '500px' }}>
-              Advanced Earthworks is your source for hassle-free, dependable grading and construction services in Healdsburg, CA. When you hire us for a project, you can rest assured that we'll approach the job with precision and care. Have questions? We'll be happy to answer them and explain how the process works. We want you to feel comfortable for having chosen us, and we'll go out of our way to earn your trust. Contact us to schedule an estimate and learn more about our services.
+              Advanced Earthworks is your source for hassle-free, dependable grading and construction services in the greater NorCal area. When you hire us for a project, you can rest assured that we'll approach the job with precision and care. Have questions? We'll be happy to answer them and explain how the process works. We want you to feel comfortable for having chosen us, and we'll go out of our way to earn your trust. Contact us to schedule an estimate and learn more about our services.
             </p>
           </div>
 

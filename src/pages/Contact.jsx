@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
 
 function Contact() {
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (val) => {
+    setEmail(val);
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (val && !re.test(val)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleSubmit = (e) => {
+    if (emailError || !email) {
+      e.preventDefault();
+      if (!email) setEmailError('Email address is required.');
+    }
+  };
+
   return (
     <>
     <section className="contact" style={{ 
@@ -17,31 +37,46 @@ function Contact() {
             <h2 className="section-title" style={{ marginBottom: '1rem' }}>CONTACT OUR TEAM.</h2>
 
             
-            <form className="contact-form">
+            <form action="https://formsubmit.co/aiopenclaw30@gmail.com" method="POST" className="contact-form" onSubmit={handleSubmit}>
+              <input type="hidden" name="_subject" value="New Contact Form Submission!" />
+              
               <div className="form-group form-row">
                 <div>
                   <label htmlFor="fullName">Full Name</label>
-                  <input type="text" id="fullName" className="form-control" placeholder="John Doe" />
+                  <input type="text" id="fullName" name="fullName" className="form-control" placeholder="John Doe" required />
                 </div>
                 <div>
                   <label htmlFor="emailAddress">Email Address</label>
-                  <input type="email" id="emailAddress" className="form-control" placeholder="john@example.com" />
+                  <input 
+                    type="email" 
+                    id="emailAddress" 
+                    name="emailAddress" 
+                    className="form-control" 
+                    placeholder="john@example.com" 
+                    required 
+                    value={email}
+                    onChange={(e) => validateEmail(e.target.value)}
+                    style={{ borderColor: emailError ? 'red' : undefined }}
+                  />
+                  {emailError && <span style={{ color: 'red', fontSize: '0.8rem', marginTop: '0.2rem', display: 'block' }}>{emailError}</span>}
                 </div>
               </div>
               <div className="form-group">
                 <label htmlFor="serviceLocation">Service Location</label>
-                <select id="serviceLocation" className="form-control">
-                  <option>Select a location...</option>
-                  <option>Healdsburg, CA</option>
-                  <option>Hopland, CA</option>
-                  <option>Other</option>
+                <select id="serviceLocation" name="serviceLocation" className="form-control" required>
+                  <option value="">Select a location...</option>
+                  <option value="Mendocino County">Mendocino County</option>
+                  <option value="Lake County">Lake County</option>
+                  <option value="Napa County">Napa County</option>
+                  <option value="Sonoma County">Sonoma County</option>
+                  <option value="Marin County">Marin County</option>
                 </select>
               </div>
               <div className="form-group">
                 <label htmlFor="projectDetails">Project Details</label>
-                <textarea id="projectDetails" className="form-control" placeholder="Describe the project scope..."></textarea>
+                <textarea id="projectDetails" name="projectDetails" className="form-control" placeholder="Describe the project scope..." required></textarea>
               </div>
-              <button type="button" className="btn btn-primary" style={{ width: '100%', padding: '1.5rem' }}>
+              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1.5rem' }}>
                 SEND <ArrowRight size={18} style={{ marginLeft: 8 }}/>
               </button>
             </form>

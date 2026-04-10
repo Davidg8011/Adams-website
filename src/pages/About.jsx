@@ -67,7 +67,7 @@ function About() {
             lineHeight: '1.7', 
             fontWeight: 400 
           }}>
-            Advanced Earthworks is your source for hassle-free, dependable grading and construction services in Healdsburg, CA. When you hire us for a project, you can rest assured that we'll approach the job with precision and care. 
+            Advanced Earthworks is your source for hassle-free, dependable grading, demolition, and construction services in Sonoma, Mendocino, and Lake County. When you hire us for a project, you can rest assured that we'll approach the job with precision and care. 
           </p>
           <p style={{ 
             color: '#555', 

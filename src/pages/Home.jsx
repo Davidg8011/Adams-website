@@ -10,7 +10,7 @@ function Home() {
 
           <h1 className="hero-title">OVER 20 YEARS <br/>OF EXCELLENCE.</h1>
           <p className="hero-desc">
-            Advanced Earthworks has been offering excavation and other services for more than 20 years. 
+            Advanced Earthworks has been offering demolition, excavation and other services for more than 20 years. 
             We take pride in our high-quality work, and our teams are all fully licensed and insured.
           </p>
 
@@ -26,20 +26,53 @@ function Home() {
             </p>
           </div>
 
-          <div className="values-cards" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-            <div className="value-card" style={{ padding: '3rem', minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <p style={{ fontStyle: 'italic', marginBottom: '2rem', color: '#333', fontSize: '1.25rem', lineHeight: '1.6' }}>
-                "{`Adam and his crew far exceeded my expectations! They were absolute professionals, hardworking and thorough. Made sure I got everything done I needed to put my property up for sale looking good! Thanks again!`}"
+          <div className="values-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            {/* Review 1 */}
+            <div className="value-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ color: '#FFB800', marginBottom: '0.75rem', fontSize: '1.2rem', letterSpacing: '2px' }}>★★★★★</div>
+              <p style={{ fontStyle: 'italic', marginBottom: '1.25rem', color: '#333', fontSize: '1.1rem', lineHeight: '1.5' }}>
+                "Hire Advanced Earthworks. Period. Professional, kind, courteous and extremely good at what they do. Will hire them again without a second thought."
               </p>
-              <h3 style={{ fontSize: '1.6rem', color: '#111', margin: 0, fontWeight: '800' }}>Susan Palavos</h3>
-              <span style={{ fontSize: '1rem', color: '#666', display: 'block', marginTop: '0.4rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Sonoma County, CA</span>
+              <div style={{ marginTop: 'auto' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#111', margin: 0, fontWeight: '800' }}>Sid G.</h3>
+                <span style={{ fontSize: '0.85rem', color: '#666', display: 'block', marginTop: '0.2rem' }}>3/30/2026</span>
+              </div>
             </div>
-            <div className="value-card" style={{ padding: '3rem', minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <p style={{ fontStyle: 'italic', marginBottom: '2rem', color: '#333', fontSize: '1.25rem', lineHeight: '1.6' }}>
-                "{`I have known Adam for years and can happily recommend him and Advanced Earthworks as a team that delivers the highest quality services with honesty and integrity.`}"
+
+            {/* Review 2 */}
+            <div className="value-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ color: '#FFB800', marginBottom: '0.75rem', fontSize: '1.2rem', letterSpacing: '2px' }}>★★★★★</div>
+              <p style={{ fontStyle: 'italic', marginBottom: '1.25rem', color: '#333', fontSize: '1.1rem', lineHeight: '1.5' }}>
+                "Adam and his crew did an outstanding job. Professional and completed the project before scheduled date. I would hire them again if needed."
               </p>
-              <h3 style={{ fontSize: '1.6rem', color: '#111', margin: 0, fontWeight: '800' }}>Erin Prieskorn</h3>
-              <span style={{ fontSize: '1rem', color: '#666', display: 'block', marginTop: '0.4rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Santa Rosa, CA</span>
+              <div style={{ marginTop: 'auto' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#111', margin: 0, fontWeight: '800' }}>Kari M.</h3>
+                <span style={{ fontSize: '0.85rem', color: '#666', display: 'block', marginTop: '0.2rem' }}>6/14/2023</span>
+              </div>
+            </div>
+
+            {/* Review 3 */}
+            <div className="value-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ color: '#FFB800', marginBottom: '0.75rem', fontSize: '1.2rem', letterSpacing: '2px' }}>★★★★★</div>
+              <p style={{ fontStyle: 'italic', marginBottom: '1.25rem', color: '#333', fontSize: '1.1rem', lineHeight: '1.5' }}>
+                "Friendly, professional company, great employees. After the Demo, you would never know there was a house, garage and barn on site"
+              </p>
+              <div style={{ marginTop: 'auto' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#111', margin: 0, fontWeight: '800' }}>Dolores W.</h3>
+                <span style={{ fontSize: '0.85rem', color: '#666', display: 'block', marginTop: '0.2rem' }}>12/12/2016</span>
+              </div>
+            </div>
+
+            {/* Review 4 */}
+            <div className="value-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ color: '#FFB800', marginBottom: '0.75rem', fontSize: '1.2rem', letterSpacing: '2px' }}>★★★★★</div>
+              <p style={{ fontStyle: 'italic', marginBottom: '1.25rem', color: '#333', fontSize: '1.1rem', lineHeight: '1.5' }}>
+                "On time, within estimate, cleaned the site after demolition as though they were cleaning their own spotless home"
+              </p>
+              <div style={{ marginTop: 'auto' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#111', margin: 0, fontWeight: '800' }}>MiMi T.</h3>
+                <span style={{ fontSize: '0.85rem', color: '#666', display: 'block', marginTop: '0.2rem' }}>7/29/2016</span>
+              </div>
             </div>
           </div>
         </div>

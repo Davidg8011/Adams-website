@@ -39,7 +39,7 @@ function Layout() {
         </div>
         <div style={{ textAlign: 'right', color: '#a0a0a0' }}>
           <p style={{ margin: 0 }}>Email: info@advanced-earthworks.com</p>
-          <p style={{ margin: 0 }}>Phone: 707-304-5870</p>
+          <p style={{ margin: 0 }}>Phone: 707-744-1554</p>
         </div>
       </footer>
     </>

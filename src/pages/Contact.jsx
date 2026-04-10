@@ -104,32 +104,6 @@ function Contact() {
               }}>
                 <img src="/assets/images/service_area_v4.png" alt="Service Area Map - 5 Counties" style={{ width: '100%', display: 'block', height: '100%', objectFit: 'cover' }} />
                 
-                {/* Headquarters Pin for Healdsburg - Sonoma County */}
-                <div style={{ 
-                  position: 'absolute', 
-                  top: '52%', 
-                  left: '42%', 
-                  transform: 'translate(-50%, -100%)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  zIndex: 10
-                }}>
-                  <div style={{ 
-                    background: 'var(--color-primary)', 
-                    color: 'white', 
-                    padding: '4px 10px', 
-                    borderRadius: '4px', 
-                    fontSize: '0.65rem', 
-                    fontWeight: 'bold',
-                    marginBottom: '4px',
-                    boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
-                    whiteSpace: 'nowrap'
-                  }}>
-                    HEADQUARTERS: HEALDSBURG
-                  </div>
-                  <MapPin size={24} color="var(--color-primary)" fill="white" />
-                </div>
               </div>
             </div>
           </div>

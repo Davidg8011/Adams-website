@@ -10,6 +10,7 @@ const images = [
   { url: '/assets/images/IMG_8123.jpg', title: 'Concrete Foundations' },
   { url: '/assets/images/IMG_8789.jpg', title: 'Heavy Machinery' },
   { url: '/assets/images/IMG_9885.jpg', title: 'Excavation Depth' },
+  { url: '/assets/images/IMG_9971.jpg', title: 'Site Equipment' },
 ];
 
 function Gallery() {

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 function Contact() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const validateEmail = (val) => {
     setEmail(val);
@@ -15,10 +17,40 @@ function Contact() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (emailError || !email) {
-      e.preventDefault();
       if (!email) setEmailError('Email address is required.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/mail.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        e.target.reset();
+        setEmail('');
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -37,8 +69,17 @@ function Contact() {
             <h2 className="section-title" style={{ marginBottom: '1rem' }}>CONTACT OUR TEAM.</h2>
 
             
-            <form action="https://formsubmit.co/aiopenclaw30@gmail.com" method="POST" className="contact-form" onSubmit={handleSubmit}>
-              <input type="hidden" name="_subject" value="New Contact Form Submission!" />
+            <form className="contact-form" onSubmit={handleSubmit}>
+              {submitStatus === 'success' && (
+                <div style={{ padding: '1rem', marginBottom: '1.5rem', backgroundColor: '#e6ffe6', border: '1px solid #00cc00', color: '#006600', borderRadius: '4px' }}>
+                  Your message has been sent successfully! We will get back to you soon.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div style={{ padding: '1rem', marginBottom: '1.5rem', backgroundColor: '#ffe6e6', border: '1px solid #cc0000', color: '#cc0000', borderRadius: '4px' }}>
+                  There was an error sending your message. Please try again later.
+                </div>
+              )}
               
               <div className="form-group form-row">
                 <div>
@@ -76,8 +117,8 @@ function Contact() {
                 <label htmlFor="projectDetails">Project Details</label>
                 <textarea id="projectDetails" name="projectDetails" className="form-control" placeholder="Describe the project scope..." required></textarea>
               </div>
-              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1.5rem' }}>
-                SEND <ArrowRight size={18} style={{ marginLeft: 8 }}/>
+              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1.5rem' }} disabled={isSubmitting}>
+                {isSubmitting ? 'SENDING...' : 'SEND'} <ArrowRight size={18} style={{ marginLeft: 8 }}/>
               </button>
             </form>
           </div>

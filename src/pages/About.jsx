@@ -1,5 +1,4 @@
 import React from 'react';
-import { Truck, Factory } from 'lucide-react';
 
 function About() {
   return (

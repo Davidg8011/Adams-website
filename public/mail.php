@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $projectDetails = $_POST['projectDetails'] ?? '';
     }
 
-    $to = "aiopenclaw30@gmail.com";
+    $to = "info@advanced-earthworks.com";
     $subject = "New Contact Form Submission from " . $fullName;
     
     $message = "You have received a new message from your website contact form.\n\n";
